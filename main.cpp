@@ -18,7 +18,7 @@ long long MaxPairwiseProductFast(const std::vector<int>& input)
     int max_index2 = -1;
     for (int j = 0; j < input.size(); ++j)
     {
-        if (max_index2 == -1 && max_index1 != max_index2 || (input[j] > input[max_index2] && input[j]!= input[max_index1]))
+        if ((max_index2 == -1 || input[j] > input[max_index2]) && (input[j] != input[max_index1]))
         {
             max_index2 = j;
         }
@@ -30,6 +30,9 @@ long long MaxPairwiseProductFast(const std::vector<int>& input)
 int main() {
     int len;
     cin >> len;
+    if (len < 2)
+        return 1;
+
     std::vector<int> input(len);
     for (int n=0; n < len; ++n)
     {
