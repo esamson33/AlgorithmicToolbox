@@ -4,6 +4,25 @@
 using std::cin;
 using std::cout;
 
+long long MaxPairwiseProduct(const std::vector<int>& input)
+{
+    long long result = 0;
+    int n = input.size();
+    for (int i = 0; i < n; ++i)
+    {
+        for (int j = i + 1; j < n; ++j)
+        {
+            auto tmp = ((long long)input[i]) * input[j];
+            if (tmp > result)
+            {
+                result = tmp;
+            }
+        }
+    }
+    return result;
+}
+
+
 long long MaxPairwiseProductFast(const std::vector<int>& input)
 {
     int max_index1 = -1;
@@ -39,7 +58,9 @@ int main() {
         cin >> input[n];
     }
 
+    //long long result = MaxPairwiseProduct(input);
     long long result = MaxPairwiseProductFast(input);
+    //long long result = MaxPairwiseProductFast(std::vector<int>(100000, 0 ));
     cout << "result: " << result << "\n";
     return 0;
 }
